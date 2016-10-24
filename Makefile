@@ -29,7 +29,8 @@ $(APP_TEST): $(APP)
 	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/MainTest.o test/MainTest.cpp
 	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/TestFibonacci.o test/TestFibonacci.cpp
 	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/TestPrimos.o test/TestPrimos.cpp
-	$(CXX) -o $(APP_TEST) output/MainTest.o output/Calculo.o output/Fibonacci.o output/Primos.o output/SalvaCalculo.o output/TestFibonacci.o output/TestPrimos.o $(LDFLAGS)
+		$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/TestCalculo.o test/TestCalculo.cpp
+	$(CXX) -o $(APP_TEST) output/MainTest.o output/Calculo.o output/Fibonacci.o output/Primos.o output/SalvaCalculo.o output/TestFibonacci.o output/TestPrimos.o output/TestCalculo.o $(LDFLAGS)
 	
 
 $(COVERAGE_DIR): test
