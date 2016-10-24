@@ -1,5 +1,5 @@
 CXX=g++
-CXX_FLAGS=-g -O0 -Wall
+CXX_FLAGS=-g -std=c++11 -O0 -Wall
 UNAME=$(shell uname)
 LDFLAGS=-Lext/lib/$(UNAME) -lgtest
 INCLUDES=-Isrc
