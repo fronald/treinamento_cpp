@@ -1,0 +1,9 @@
+nbproject
+.DS_Store
+*~
+*.swp
+*.idea
+*.iml
+dist
+output
+
