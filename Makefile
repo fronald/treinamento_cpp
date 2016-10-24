@@ -17,15 +17,17 @@ $(APP):
 	$(CXX) $(CXX_FLAGS) $(INCLUDES) -c -o output/Main.o src/Main.cpp
 	$(CXX) $(CXX_FLAGS) $(INCLUDES) -c -o output/Calculo.o src/Calculo.cpp
 	$(CXX) $(CXX_FLAGS) $(INCLUDES) -c -o output/Fibonacci.o src/Fibonacci.cpp
+	$(CXX) $(CXX_FLAGS) $(INCLUDES) -c -o output/Primos.o src/Primos.cpp
 	$(CXX) $(CXX_FLAGS) $(INCLUDES) -c -o output/SalvaCalculo.o src/SalvaCalculo.cpp
-	$(CXX) -o $(APP) output/Main.o output/Calculo.o output/Fibonacci.o output/SalvaCalculo.o
+	$(CXX) -o $(APP) output/Main.o output/Calculo.o output/Fibonacci.o output/Primos.o output/SalvaCalculo.o
 
 $(APP_TEST): $(APP)
 	mkdir -p output
 	mkdir -p dist
 	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/MainTest.o test/MainTest.cpp
 	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/TestFibonacci.o test/TestFibonacci.cpp
-	$(CXX) -o $(APP_TEST) output/MainTest.o output/Calculo.o output/Fibonacci.o output/SalvaCalculo.o output/TestFibonacci.o $(LDFLAGS)
+	$(CXX) $(CXX_FLAGS) $(TEST_INCLUDES) -c -o output/TestPrimos.o test/TestPrimos.cpp
+	$(CXX) -o $(APP_TEST) output/MainTest.o output/Calculo.o output/Fibonacci.o output/Primos.o output/SalvaCalculo.o output/TestFibonacci.o output/TestPrimos.o $(LDFLAGS)
 	
 
 clean:
