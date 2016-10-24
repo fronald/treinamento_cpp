@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "Calculo.h"
 #include "Fibonacci.h"
+#include "Primos.h"
 #include "SalvaCalculo.h"
 #include <map>
 
@@ -39,7 +40,8 @@ int main(int argc, char** argv) {
 
     map<string, Calculo*> calculos;
     calculos.insert(pair<string, Calculo*>("fibonacci", new Fibonacci(inicio, tamanho)));
-
+    calculos.insert(pair<string, Calculo*>("primos", new Primos(inicio, tamanho)));
+    
     // Retorna sucesso
     if (argc > 3) {
         if (calculos.count(argv[3]) > 0) {

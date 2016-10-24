@@ -2,7 +2,7 @@
 
 #include "Fibonacci.h"
 
-class TestFibonacci: public ::testing::Test { 
+class TestFibonacci : public ::testing::Test { 
 
 protected:
    Calculo* fibonacci;
@@ -14,6 +14,21 @@ protected:
  
    virtual void TearDown( ) { 
        fibonacci->limpaCalculo();
+       delete fibonacci;
+   }
+   
+};
+
+class TestFibonacciFail : public ::testing::Test { 
+
+protected:
+   Calculo* fibonacci;
+ 
+   virtual void SetUp( ) {
+       fibonacci = new Fibonacci(0, 0);
+   }
+ 
+   virtual void TearDown( ) { 
        delete fibonacci;
    }
    
@@ -35,4 +50,12 @@ TEST_F(TestFibonacci, TesteDeResultado){
     EXPECT_TRUE(fibonacci->resultado(8) == 21);
     EXPECT_TRUE(fibonacci->resultado(9) == 34);
     EXPECT_FALSE(fibonacci->resultado(9) == 35);
+}
+
+TEST_F(TestFibonacci, TesteDeNome) {
+    EXPECT_STREQ(fibonacci->nome().c_str(), "Fibonacci");
+}
+
+TEST_F(TestFibonacciFail, TesteDeResultadoZero) {
+    EXPECT_TRUE(fibonacci->resultado(0) == 0);
 }

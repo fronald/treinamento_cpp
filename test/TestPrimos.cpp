@@ -13,7 +13,7 @@ class TestPrimos : public ::testing::Test {
         Calculo* primos;
         
         virtual void SetUp() {
-            primos = new Primos(0, 10);
+            primos = new Primos();
         }
         
         virtual void TearDown() {
@@ -25,5 +25,47 @@ class TestPrimos : public ::testing::Test {
 TEST_F(TestPrimos, Teste) {
     EXPECT_TRUE(primos->resultado(0) == 0);
     EXPECT_TRUE(primos->numeroResultados() == 0);
-    EXPECT_STREQ(primos->nome().c_str(), "Calculo vazio");
+}
+
+
+////////////////////
+
+
+class TestPrimosInitialize : public ::testing::Test { 
+
+protected:
+   Calculo* primos;
+ 
+   virtual void SetUp( ) {
+       primos = new Primos(0, 10);
+       primos->calcula();
+   }
+ 
+   virtual void TearDown( ) { 
+       primos->limpaCalculo();
+       delete primos;
+   }
+   
+};
+
+TEST_F(TestPrimosInitialize, TesteDeTamanho){
+    EXPECT_TRUE(primos->numeroResultados() == 10);
+}
+
+TEST_F(TestPrimosInitialize, TesteDeResultado){
+    EXPECT_TRUE(primos->resultado(0) == 2);
+    EXPECT_TRUE(primos->resultado(1) == 3);
+    EXPECT_TRUE(primos->resultado(2) == 5);
+    EXPECT_TRUE(primos->resultado(3) == 7);
+    EXPECT_TRUE(primos->resultado(4) == 11);
+    EXPECT_TRUE(primos->resultado(5) == 13);
+    EXPECT_TRUE(primos->resultado(6) == 17);
+    EXPECT_TRUE(primos->resultado(7) == 19);
+    EXPECT_TRUE(primos->resultado(8) == 23);
+    EXPECT_TRUE(primos->resultado(9) == 29);
+    EXPECT_FALSE(primos->resultado(9) == 30);
+}
+
+TEST_F(TestPrimosInitialize, TesteDeNome) {
+    EXPECT_STREQ(primos->nome().c_str(), "Primos");
 }

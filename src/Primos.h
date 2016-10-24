@@ -23,7 +23,17 @@ class Primos : public Calculo {
         
         Primos(int inicio = 0, unsigned int tamanho = 0);
         
+        virtual unsigned int numeroResultados();
+        
+        virtual int resultado(unsigned int indice);
+        
+        virtual void limpaCalculo();
+        
+        virtual string nome() const;
+        
         void calcula();
+        
+        virtual ~Primos();
         
     private:
         
