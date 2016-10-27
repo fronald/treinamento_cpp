@@ -34,5 +34,10 @@ TEST_F(TestFibonacci, TesteDeResultado){
     EXPECT_TRUE(fibonacci->resultado(7) == 13);
     EXPECT_TRUE(fibonacci->resultado(8) == 21);
     EXPECT_TRUE(fibonacci->resultado(9) == 34);
+    EXPECT_TRUE(fibonacci->resultado(10) == 0);
     EXPECT_FALSE(fibonacci->resultado(9) == 35);
+}
+
+TEST_F(TestFibonacci, TesteDeNome){
+    EXPECT_TRUE(fibonacci->nome() == "Fibonacci");
 }

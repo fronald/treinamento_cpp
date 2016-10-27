@@ -23,7 +23,8 @@ void Calculo::limpaCalculo(){
 
 unsigned int Calculo::numeroResultados(){
    // TODO: Implementar
-    return 0;
+    //return 0;
+    return this->tamanho;
 }
 
 int Calculo::resultado(unsigned int indice){
