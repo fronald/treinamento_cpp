@@ -13,6 +13,20 @@
 #include "SalvaCalculo.h"
 #include <map>
 
+#ifdef WITH_UNIT_TEST
+#include <gtest/gtest.h>
+
+/*
+ * Main para execução dos testes.
+ * @param argc
+ * @param argv
+ */
+int main(int argc, char** argv) {
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+#else
+
 using namespace std;
 
 void imprimeCalculo(Calculo *calculo) {
@@ -62,4 +76,6 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
+
+#endif
 
