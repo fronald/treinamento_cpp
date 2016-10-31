@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 #include "Primos.h"
 #include <math.h>
 #include <iostream>
 
-Primos::Primos(int inicio, unsigned int tamanho) : Calculo(inicio, tamanho) {
+Primos::Primos(int inicio, unsigned int tamanho, Interceptador *interceptador) : Calculo(inicio, tamanho, interceptador) {
     this->resultados.reserve(tamanho);
 }
 
@@ -36,11 +30,11 @@ unsigned int Primos::numeroResultados() {
 }
 
 int Primos::resultado(unsigned int indice) {
+    int rtn = 0;
     if(indice + 1 <= this->resultados.size()) {
-        return this->resultados.at(indice);
-    } else {
-        return 0;
+        rtn = this->resultados.at(indice);
     }
+    return this->interceptador->intercepta(rtn);
 }
 
 string Primos::toString(char sep){

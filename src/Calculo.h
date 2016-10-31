@@ -9,6 +9,7 @@
 #define CALCULO_H
 
 #include <string>
+#include "Interceptador.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ public:
      * Construtor
      * @param inicio Início do cálculo
      */
-    Calculo(int inicio = 0, unsigned int tamanho = 0);
+    Calculo(int inicio = 0, unsigned int tamanho = 0, Interceptador *interceptador = 0);
     
     /**
      * Calcula Fibonacci
@@ -76,6 +77,11 @@ protected:
      * Tamanho do cálculo que será realizado
      */
     unsigned int tamanho;
+    
+    /**
+     * Interceptador
+     */
+    Interceptador *interceptador;
     
 };
 

@@ -1,5 +1,5 @@
 CXX=g++
-IS_TEST=$(filter test,$(MAKECMDGOALS))
+IS_TEST=$(filter test || kcov,$(MAKECMDGOALS))
 UNAME=$(shell uname)
 CXX_FLAGS=-g -O0 -std=c++11 -Wall -fexceptions $(if $(IS_TEST),-DWITH_UNIT_TEST,-DNO_UNIT_TEST) -DOS_$(UNAME)
 PWD=$(shell pwd)
@@ -50,7 +50,6 @@ $(TEST_OBJ_DIR):
 $(APP_TEST): setup-test $(APP) $(TEST_OBJS)
 	$(CXX) -o $(APP_TEST) $(OBJS) $(TEST_OBJS) $(LDFLAGS)
 	
-
 $(COVERAGE_DIR): test
 	mkdir -p $(COVERAGE_DIR)
 	kcov --skip-solibs --include-path=$(PWD)/src $(COVERAGE_DIR) $(APP_TEST)

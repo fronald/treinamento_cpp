@@ -24,7 +24,7 @@ public:
      * @param inicio Inicio do calculo
      * @params tamanho Numero de resultados para calcular
      */
-    Fibonacci(int inicio = 0, unsigned int tamanho = 10);
+    Fibonacci(int inicio = 0, unsigned int tamanho = 10, Interceptador *interceptador = 0);
     
     /**
      * Calcula

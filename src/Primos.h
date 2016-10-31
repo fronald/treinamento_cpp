@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Primos.h
  * Author: development
@@ -21,7 +15,7 @@ class Primos : public Calculo {
     
     public:
         
-        Primos(int inicio = 0, unsigned int tamanho = 0);
+        Primos(int inicio = 0, unsigned int tamanho = 0, Interceptador *interceptador = 0);
         
         virtual unsigned int numeroResultados();
         

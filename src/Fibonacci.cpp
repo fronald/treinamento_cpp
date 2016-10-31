@@ -6,8 +6,9 @@
  */
 
 #include "Fibonacci.h"
+#include <sstream>
 
-Fibonacci::Fibonacci(int inicio, unsigned int tamanho): Calculo(inicio, tamanho) {
+Fibonacci::Fibonacci(int inicio, unsigned int tamanho, Interceptador *interceptador): Calculo(inicio, tamanho, interceptador) {
     this->resultados.reserve(tamanho);
 }
 
@@ -36,16 +37,24 @@ string Fibonacci::nome() const{
 }
 
 int Fibonacci::resultado(unsigned int indice){
-    if(indice + 1 <= this->resultados.size()){
-        return this->resultados.at(indice);
-    }else{
-        return 0;
+    int rtn = 0;
+    if(indice + 1 <= this->resultados.size()) {
+        rtn = this->resultados.at(indice);
     }
+    return this->interceptador->intercepta(rtn);
 }
 
 string Fibonacci::toString(char sep){
-    // TODO: Implementar
-    return "";
+    stringstream ss;
+    unsigned int i = 0;
+    for(vector<int>::iterator it = this->resultados.begin(); it != this->resultados.end(); it++){
+        ss << *it;
+        if(i < (this->resultados.size() - 1)){
+            ss << sep;
+        }
+        i++;
+    }
+    return ss.str();
 }
 
 void Fibonacci::limpaCalculo() {

@@ -8,9 +8,14 @@
 #include "Calculo.h"
 #include <vector>
 
-Calculo::Calculo(int inicio, unsigned int tamanho) {
+Calculo::Calculo(int inicio, unsigned int tamanho, Interceptador *interceptador) {
     this->inicio = inicio;
     this->tamanho = tamanho;
+    if(interceptador == 0){
+        this->interceptador = new Interceptador();
+    }else{
+        this->interceptador = interceptador;
+    }
 }
 
 void Calculo::calcula() {
@@ -42,4 +47,7 @@ string Calculo::nome() const{
 
 Calculo::~Calculo() {
     this->inicio = 0;
+    if(interceptador != 0){
+        delete interceptador;
+    }
 }
