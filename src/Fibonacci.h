@@ -56,6 +56,13 @@ public:
     virtual string nome() const;
     
     /**
+     * Transforma o resultado em string.
+     * @param sep Separador
+     * @return 
+     */
+    virtual string toString(char sep);
+    
+    /**
      * Destructor
      */
     virtual ~Fibonacci();

@@ -31,6 +31,11 @@ int Calculo::resultado(unsigned int indice){
     return 0;
 }
 
+string Calculo::toString(char sep){
+    // TODO: Implementar
+    return "";
+}
+
 string Calculo::nome() const{
     return "Calculo vazio";
 }

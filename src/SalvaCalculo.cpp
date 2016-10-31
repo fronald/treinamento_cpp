@@ -16,10 +16,9 @@ SalvaCalculo::SalvaCalculo(Calculo *calculo) {
 void SalvaCalculo::salva(string filePath){
     ofstream ofs(filePath);
     ofs << "Calculo: " << this->calculo->nome() << endl;
-    printf("%s\t\t%s\n", "Indice", "Valor");
     this->calculo->calcula();
     for(unsigned int i = 0; i < this->calculo->numeroResultados(); i++){
-        printf("%d\t\t%d\n", i, this->calculo->resultado(i));
+        ofs << i << "\t\t" << this->calculo->resultado(i) << endl;
     }
 }
 

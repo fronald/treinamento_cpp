@@ -32,6 +32,8 @@ class Primos : public Calculo {
         virtual string nome() const;
         
         void calcula();
+    
+        virtual string toString(char sep);
         
         virtual ~Primos();
         

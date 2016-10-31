@@ -43,6 +43,11 @@ int Fibonacci::resultado(unsigned int indice){
     }
 }
 
+string Fibonacci::toString(char sep){
+    // TODO: Implementar
+    return "";
+}
+
 void Fibonacci::limpaCalculo() {
     this->resultados.clear();
 }

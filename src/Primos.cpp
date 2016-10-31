@@ -28,7 +28,6 @@ void Primos::calcula() {
         }
         if(isPrimo) this->resultados.push_back(ini);
         ini++;
-        std::cout << ini << " ";
     }
 }
 
@@ -42,6 +41,11 @@ int Primos::resultado(unsigned int indice) {
     } else {
         return 0;
     }
+}
+
+string Primos::toString(char sep){
+    // TODO: Implementar
+    return "";
 }
 
 void Primos::limpaCalculo() {
