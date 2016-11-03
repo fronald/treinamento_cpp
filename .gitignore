@@ -7,3 +7,6 @@ nbproject
 dist
 output
 output_tests
+.cproject
+.project
+.settings/
