@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 #include <gtest/gtest.h>
+#include <hippomocks.h>
 
 #include "Primos.h"
 
@@ -22,10 +23,26 @@ class TestPrimos : public ::testing::Test {
     
 };
 
-TEST_F(TestPrimos, Teste) {
-    EXPECT_TRUE(primos->resultado(0) == 0);
-    EXPECT_TRUE(primos->numeroResultados() == 0);
-}
+class TestPrimosInterceptador : public ::testing::Test { 
+
+protected:
+   Calculo* primos;
+   MockRepository *mocks;
+   Interceptador *interceptador;
+ 
+   virtual void SetUp( ) {
+       mocks = new MockRepository();
+       interceptador = mocks->Mock<Interceptador>();
+       primos = new Primos(0, 10, interceptador);
+       primos->calcula();
+   }
+ 
+   virtual void TearDown( ) {
+       mocks->OnCallDestructor(interceptador);
+       delete primos;
+   }
+   
+};
 
 
 ////////////////////
@@ -48,6 +65,11 @@ protected:
    
 };
 
+TEST_F(TestPrimos, Teste) {
+    EXPECT_TRUE(primos->resultado(0) == 0);
+    EXPECT_TRUE(primos->numeroResultados() == 0);
+}
+
 TEST_F(TestPrimosInitialize, TesteDeTamanho){
     EXPECT_TRUE(primos->numeroResultados() == 10);
 }
@@ -68,4 +90,18 @@ TEST_F(TestPrimosInitialize, TesteDeResultado){
 
 TEST_F(TestPrimosInitialize, TesteDeNome) {
     EXPECT_STREQ(primos->nome().c_str(), "Primos");
+}
+
+TEST_F(TestPrimosInitialize, TesteToString) {
+    EXPECT_STREQ(primos->toString(';').c_str(), "2;3;5;7;11;13;17;19;23;29");
+    EXPECT_STREQ(primos->toString(',').c_str(), "2,3,5,7,11,13,17,19,23,29");
+ }
+
+TEST_F(TestPrimosInterceptador, TesteDeResultadoZero) {
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(7).Return(15);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(11).Return(66);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(17).Return(44);
+    EXPECT_TRUE(primos->resultado(3) == 15);
+    EXPECT_FALSE(primos->resultado(4) == 99);
+    EXPECT_TRUE(primos->resultado(6) == 44);
 }

@@ -39,8 +39,13 @@ void imprimeCalculo(Calculo *calculo) {
     }
     string with_sep = calculo->toString(';');
     cout << endl;
-    cout <<"teste do separador" << endl;
+    cout <<"teste do separador com ;" << endl;
     cout << with_sep << endl;
+    
+    string with_sep2 = calculo->toString(',');
+    cout << endl;
+    cout <<"teste do separador com ," << endl;
+    cout << with_sep2 << endl;
 }
 
 /*

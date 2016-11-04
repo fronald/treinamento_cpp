@@ -46,11 +46,12 @@ string Primos::toString(char sep){
     string str;
     string a;
     unsigned int i = 0;
+    char s[2] = {sep, 0};
     for(vector<int>::iterator it = this->resultados.begin(); it != this->resultados.end(); it++){
         a = to_string(*it);
         str.append(a);
         if(i < (this->resultados.size() - 1)){
-            str.append(&sep);
+            str.append(s);
         }
         i++;
     }
