@@ -36,6 +36,8 @@ Nosso caso de uso é: O usuário entra no diretório do nosso aplicativo e execu
 - Inicie pelo teste unitário, ou seja, este é um exercício de TDD;
 - Garanta 100% de cobertura dos testes unitários mesmo nas classes que não foi você que escreveu;
 - Garanta que o objeto "Interceptador" é chamado, e prove isto no teste unitário (utilizando HippoMocks).
+- Este software possui um BUG ao trabalhar com números muito grandes. Corrija-o.
+- Ao terminar seu trabalho, me envie um pull request para correção.
 
 # Importante sobre o HippoMocks
 
