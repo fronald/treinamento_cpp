@@ -29,7 +29,7 @@ $(APP): setup $(OBJS)
 	$(CXX) -o $(APP) $(OBJS) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) -c $< $(CXX_FLAGS) $(TEST_CXX_FLAGS) $(INCLUDES) -o $@
+	$(CXX) -c $< $(CXX_FLAGS) $(TEST_CXX_FLAGS) $(INCLUDES) $(TEST_INCLUDES) -o $@
 
 $(TEST_OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 	$(CXX) -c $< $(CXX_FLAGS) $(TEST_CXX_FLAGS) $(INCLUDES) $(TEST_INCLUDES) -o $@
@@ -61,5 +61,3 @@ clean:
 	rm -Rf $(OBJ_DIR)
 	rm -Rf $(DIST_DIR)
 	rm -Rf $(COVERAGE_DIR)
-
-
