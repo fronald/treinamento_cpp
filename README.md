@@ -1,5 +1,5 @@
-# treinamento_cpp
-Treinamento básico de C++ e Google Tests
+# Wiselabs Software - treinamento_cpp
+Treinamento básico de C++, Google Tests e HippoMocks
 
 # Setup
 - Faça fork do projeto.
