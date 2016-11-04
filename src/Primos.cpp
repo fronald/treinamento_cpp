@@ -1,6 +1,11 @@
 #include "Primos.h"
 #include <math.h>
 #include <iostream>
+#include <string>
+#include <stdio.h>
+
+
+using namespace std;
 
 Primos::Primos(int inicio, unsigned int tamanho, Interceptador *interceptador) : Calculo(inicio, tamanho, interceptador) {
     this->resultados.reserve(tamanho);
@@ -38,8 +43,19 @@ int Primos::resultado(unsigned int indice) {
 }
 
 string Primos::toString(char sep){
-    // TODO: Implementar
-    return "";
+    string str;
+    string a;
+    unsigned int i = 0;
+    for(vector<int>::iterator it = this->resultados.begin(); it != this->resultados.end(); it++){
+        a = to_string(*it);
+        str.append(a);
+        if(i < (this->resultados.size() - 1)){
+            str.append(&sep);
+        }
+        i++;
+    }
+    
+    return str;
 }
 
 void Primos::limpaCalculo() {
