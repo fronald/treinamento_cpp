@@ -69,3 +69,8 @@ TEST_F(TestPrimosInitialize, TesteDeResultado){
 TEST_F(TestPrimosInitialize, TesteDeNome) {
     EXPECT_STREQ(primos->nome().c_str(), "Primos");
 }
+
+TEST_F(TestPrimosInitialize, TesteToString) {
+    EXPECT_STREQ(primos->toString(',').c_str(), "2,3,5,7,11,13,17,19,23,29");
+    EXPECT_STREQ(primos->toString(';').c_str(), "2;3;5;7;11;13;17;19;23;29");
+}
