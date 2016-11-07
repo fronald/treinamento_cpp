@@ -34,7 +34,14 @@ void imprimeCalculo(Calculo *calculo) {
     printf("%s\n", calculo->nome().c_str());
     printf("%s\t\t%s\n", "Indice", "Valor");
     for (unsigned int i = 0; i < calculo->numeroResultados(); i++) {
-        printf("%d\t\t%d\n", i, calculo->resultado(i));
+        std::string value;
+        if (calculo->nome() == "Golomb") {
+            calculo->resultado(i, value);
+            printf("%d\t\t%s\n", i, value.c_str());
+        }
+        else {
+            printf("%d\t\t%d\n", i, calculo->resultado(i));
+        }
     }
 }
 
