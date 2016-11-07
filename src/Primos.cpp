@@ -39,7 +39,16 @@ int Primos::resultado(unsigned int indice) {
 
 string Primos::toString(char sep){
     // TODO: Implementar
-    return "";
+    stringstream ss;
+    unsigned int i = 0;
+    for(vector<int>::iterator it = this->resultados.begin(); it != this->resultados.end(); it++){
+        ss << *it;
+        if(i < (this->resultados.size() - 1)){
+            ss << sep;
+        }
+        i++;
+    }
+    return ss.str();
 }
 
 void Primos::limpaCalculo() {
