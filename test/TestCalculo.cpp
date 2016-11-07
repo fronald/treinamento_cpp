@@ -61,7 +61,7 @@ TEST_F(TestCalculoMock, Test) {
 TEST_F(TestCalculo, Test) {
     std::string value;
     EXPECT_TRUE(calculo->resultado(0) == 0);
-    EXPECT_FALSE(calculo->resultado(0, value));
+    EXPECT_TRUE(calculo->resultado(0, value) == 0);
     EXPECT_TRUE(calculo->numeroResultados() == 0);
     EXPECT_STREQ(calculo->nome().c_str(), "Calculo vazio");
     EXPECT_STREQ(calculo->toString(',').c_str(), "");

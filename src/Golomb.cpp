@@ -1,7 +1,6 @@
 #include <Golomb.h>
 #include <vector>
 #include <sstream>
-#include <iostream>
 
 Golomb::Golomb(int inicio, unsigned int tamanho, Interceptador *interceptador) :
     Calculo(inicio, tamanho, interceptador)
@@ -17,7 +16,6 @@ void Golomb::calcula()
             ss << i;
         }
         this->resultados.push_back(ss.str());
-        //std::cout << ss.str() << std::endl;
         ss.str("");
     }
 }
@@ -31,23 +29,34 @@ unsigned int Golomb::numeroResultados()
 {
     return this->resultados.size();
 }
-
+#include <iostream>
 int Golomb::resultado(unsigned int indice)
 {
+    int rtn;
+    std::stringstream ss;
+
     if (indice >= this->resultados.size()) {
         return 0; //?
     }
+    ss << this->resultados[indice];
+    ss >> rtn;
 
-    return this->interceptador->intercepta(indice);
+    return this->interceptador->intercepta(rtn);
 }
 
 bool Golomb::resultado(unsigned int id, std::string& value)
 {
+    int rtn;
+    std::stringstream ss;
+
     if (id >= this->resultados.size()) {
         return false;
     }
     value = this->resultados[id];
-    this->interceptador->intercepta(id);
+    ss << value;
+    ss >> rtn;
+
+    this->interceptador->intercepta(rtn);
     return true;
 }
 

@@ -93,10 +93,10 @@ TEST_F(TestGolomb, TesteToString)
 
 TEST_F(TestGolombInterceptator, TesteDeResultadoZero)
 {
-    mocks->ExpectCall(interceptador, Interceptador::intercepta).With(3).Return(15);
-    //mocks->ExpectCall(interceptador, Interceptador::intercepta).With(4).Return(66);
-    //mocks->ExpectCall(interceptador, Interceptador::intercepta).With(6).Return(44);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(333).Return(15);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(4444).Return(66);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(666666).Return(44);
     EXPECT_TRUE(golomb->resultado(3) == 15);
-    //EXPECT_FALSE(golomb->resultado(4) == 99);
-    //EXPECT_TRUE(golomb->resultado(6) == 44);
+    EXPECT_FALSE(golomb->resultado(4) == 99);
+    EXPECT_TRUE(golomb->resultado(6) == 44);
 }
