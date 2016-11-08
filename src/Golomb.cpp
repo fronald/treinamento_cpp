@@ -8,7 +8,7 @@ Golomb::Golomb(int inicio, unsigned int tamanho, Interceptador *interceptador) :
     this->resultados.reserve(tamanho);
 }
 
-#include <iostream>
+
 void Golomb::calcula()
 {
     std::stringstream ss;
