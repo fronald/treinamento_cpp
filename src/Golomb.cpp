@@ -8,16 +8,36 @@ Golomb::Golomb(int inicio, unsigned int tamanho, Interceptador *interceptador) :
     this->resultados.reserve(tamanho);
 }
 
+#include <iostream>
 void Golomb::calcula()
 {
     std::stringstream ss;
+    unsigned int gV;
     for (int i = inicio; i < (int)(inicio + tamanho); ++i) {
-        for (int j = 0; j < i; ++j) {
+        gV = this->golombValue(i);
+
+        for (unsigned int j = 0; j < gV; ++j) {
             ss << i;
         }
         this->resultados.push_back(ss.str());
         ss.str("");
     }
+}
+
+unsigned int Golomb::golombValue(const unsigned int n)
+{
+    if (n < 1) return 0;
+
+    std::vector<unsigned int> g;
+    g.push_back(0);
+    for (unsigned int i = 1; i <= n; ++i) {
+        if (i == 1) {
+            g.push_back(1);
+            continue;
+        }
+        g.push_back(1 + g[(i - 1) + 1 - g[g[i-1]]]);
+    }
+    return g[n];
 }
 
 void Golomb::limpaCalculo()

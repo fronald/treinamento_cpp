@@ -67,6 +67,14 @@ public:
      * Destructor
      */
     virtual ~Golomb();
+
+    /**
+     * @brief Dummy implementation of Golomb sequence. For each input
+     * all precedessor values are computed again.
+     * @param [in] n Input for Golomb sequence
+     * @return Golomb value
+     */
+    unsigned int golombValue(const unsigned int n);
 private:
 
     /**

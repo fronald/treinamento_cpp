@@ -11,13 +11,11 @@ protected:
     virtual void SetUp()
     {
         golomb = new Golomb(0, 10);
-        //mocks.ExpectCall(golomb, Golomb::calcula)
         golomb->calcula();
     }
 
     virtual void TearDown()
     {
-        //mocks->ExpectCall(golomb, Golomb::calcula);
         golomb->limpaCalculo();
         delete golomb;
     }
@@ -60,19 +58,19 @@ TEST_F(TestGolomb, TesteDeResultado)
     golomb->resultado(2, value);
     EXPECT_TRUE(value == "22");
     golomb->resultado(3, value);
-    EXPECT_TRUE(value == "333");
+    EXPECT_TRUE(value == "33");
     golomb->resultado(4, value);
-    EXPECT_TRUE(value == "4444");
+    EXPECT_TRUE(value == "444");
     golomb->resultado(5, value);
-    EXPECT_TRUE(value == "55555");
+    EXPECT_TRUE(value == "555");
     golomb->resultado(6, value);
-    EXPECT_TRUE(value == "666666");
+    EXPECT_TRUE(value == "6666");
     golomb->resultado(7, value);
-    EXPECT_TRUE(value == "7777777");
+    EXPECT_TRUE(value == "7777");
     golomb->resultado(8, value);
-    EXPECT_TRUE(value == "88888888");
+    EXPECT_TRUE(value == "8888");
     golomb->resultado(9, value);
-    EXPECT_TRUE(value == "999999999");
+    EXPECT_TRUE(value == "99999");
     golomb->resultado(1, value);
     EXPECT_FALSE(value == "7777777");
 
@@ -87,15 +85,15 @@ TEST_F(TestGolomb, TestDeNome)
 
 TEST_F(TestGolomb, TesteToString)
 {
-    EXPECT_STREQ(golomb->toString(',').c_str(), ",1,22,333,4444,55555,666666,7777777,88888888,999999999");
-    EXPECT_STREQ(golomb->toString(';').c_str(), ";1;22;333;4444;55555;666666;7777777;88888888;999999999");
+    EXPECT_STREQ(golomb->toString(',').c_str(), ",1,22,33,444,555,6666,7777,8888,99999");
+    EXPECT_STREQ(golomb->toString(';').c_str(), ";1;22;33;444;555;6666;7777;8888;99999");
 }
 
 TEST_F(TestGolombInterceptator, TesteDeResultadoZero)
 {
-    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(333).Return(15);
-    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(4444).Return(66);
-    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(666666).Return(44);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(33).Return(15);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(444).Return(66);
+    mocks->ExpectCall(this->interceptador, Interceptador::intercepta).With(6666).Return(44);
     EXPECT_TRUE(golomb->resultado(3) == 15);
     EXPECT_FALSE(golomb->resultado(4) == 99);
     EXPECT_TRUE(golomb->resultado(6) == 44);
