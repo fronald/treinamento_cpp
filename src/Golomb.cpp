@@ -49,7 +49,7 @@ unsigned int Golomb::numeroResultados()
 {
     return this->resultados.size();
 }
-#include <iostream>
+
 int Golomb::resultado(unsigned int indice)
 {
     int rtn;
