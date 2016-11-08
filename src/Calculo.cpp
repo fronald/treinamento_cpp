@@ -36,6 +36,11 @@ int Calculo::resultado(unsigned int indice){
     return 0;
 }
 
+bool Calculo::resultado(unsigned int id, std::string& value){
+    return false;
+   // TODO: Implementar
+}
+
 string Calculo::toString(char sep){
     // TODO: Implementar
     return "";

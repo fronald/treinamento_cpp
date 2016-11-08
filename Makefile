@@ -61,5 +61,3 @@ clean:
 	rm -Rf $(OBJ_DIR)
 	rm -Rf $(DIST_DIR)
 	rm -Rf $(COVERAGE_DIR)
-
-

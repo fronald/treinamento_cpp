@@ -17,7 +17,7 @@ using namespace std;
  * Implementa o calculo de Fibonacci.
  */
 class Fibonacci: public Calculo {
-    
+
 public:
     /**
      * Constructor
@@ -25,54 +25,54 @@ public:
      * @params tamanho Numero de resultados para calcular
      */
     Fibonacci(int inicio = 0, unsigned int tamanho = 10, Interceptador *interceptador = 0);
-    
+
     /**
      * Calcula
      */
     void calcula();
-    
+
     /**
      * Resultados
      * @return 
      */
     virtual unsigned int numeroResultados();
-    
+
     /**
      * Limpa o calculo
      */
     virtual void limpaCalculo();
-    
+
     /**
      * Retorna o resultado em uma determinada posição
      * @param indice
      * @return 
      */
     virtual int resultado(unsigned int indice);
-    
+
     /**
      * Retorna o nome do calculo
      * @return 
      */
     virtual string nome() const;
-    
+
     /**
      * Transforma o resultado em string.
      * @param sep Separador
      * @return 
      */
     virtual string toString(char sep);
-    
+
     /**
      * Destructor
      */
     virtual ~Fibonacci();
 private:
-    
+
     /**
      * Lista de resultados
      */
     vector<int> resultados;
-    
+
 };
 
 #endif /* FIBONACCI_H */

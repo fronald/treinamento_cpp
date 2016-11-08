@@ -11,6 +11,7 @@
 #include "Fibonacci.h"
 #include "Primos.h"
 #include "SalvaCalculo.h"
+#include <Golomb.h>
 #include <map>
 
 #ifdef WITH_UNIT_TEST
@@ -33,7 +34,14 @@ void imprimeCalculo(Calculo *calculo) {
     printf("%s\n", calculo->nome().c_str());
     printf("%s\t\t%s\n", "Indice", "Valor");
     for (unsigned int i = 0; i < calculo->numeroResultados(); i++) {
-        printf("%d\t\t%d\n", i, calculo->resultado(i));
+        std::string value;
+        if (calculo->nome() == "Golomb") {
+            calculo->resultado(i, value);
+            printf("%d\t\t%s\n", i, value.c_str());
+        }
+        else {
+            printf("%d\t\t%d\n", i, calculo->resultado(i));
+        }
     }
 }
 
@@ -55,7 +63,8 @@ int main(int argc, char** argv) {
     map<string, Calculo*> calculos;
     calculos.insert(pair<string, Calculo*>("fibonacci", new Fibonacci(inicio, tamanho)));
     calculos.insert(pair<string, Calculo*>("primos", new Primos(inicio, tamanho)));
-    
+    calculos.insert(pair<string, Calculo*>("golomb", new Golomb(inicio, tamanho)));
+
     // Retorna sucesso
     if (argc > 3) {
         if (calculos.count(argv[3]) > 0) {
