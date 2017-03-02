@@ -12,6 +12,9 @@
 #include "Primos.h"
 #include "SalvaCalculo.h"
 #include <map>
+#include <iostream>
+
+using namespace std;
 
 #ifdef WITH_UNIT_TEST
 #include <gtest/gtest.h>
@@ -27,7 +30,6 @@ int main(int argc, char** argv) {
 }
 #else
 
-using namespace std;
 
 void imprimeCalculo(Calculo *calculo) {
     printf("%s\n", calculo->nome().c_str());
@@ -35,6 +37,15 @@ void imprimeCalculo(Calculo *calculo) {
     for (unsigned int i = 0; i < calculo->numeroResultados(); i++) {
         printf("%d\t\t%d\n", i, calculo->resultado(i));
     }
+    string with_sep = calculo->toString(';');
+    cout << endl;
+    cout <<"teste do separador com ;" << endl;
+    cout << with_sep << endl;
+    
+    string with_sep2 = calculo->toString(',');
+    cout << endl;
+    cout <<"teste do separador com ," << endl;
+    cout << with_sep2 << endl;
 }
 
 /*
