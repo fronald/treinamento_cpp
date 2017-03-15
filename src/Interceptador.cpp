@@ -17,7 +17,7 @@ Interceptador::Interceptador() {
     //
 }
 
-int Interceptador::intercepta(int i){
+unsigned long Interceptador::intercepta(unsigned long i){
     return i;
 }
 

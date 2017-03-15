@@ -30,7 +30,7 @@ public:
      * @param i
      * @return 
      */
-    virtual int intercepta(int i);
+    virtual unsigned long intercepta(unsigned long i);
     
     /**
      * Destrutor

@@ -31,7 +31,7 @@ unsigned int Calculo::numeroResultados(){
     return 0;
 }
 
-int Calculo::resultado(unsigned int indice){
+unsigned long Calculo::resultado(unsigned int indice){
    // TODO: Implementar
     return 0;
 }

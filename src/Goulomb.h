@@ -1,12 +1,12 @@
 /* 
- * File:   Fibonacci.h
- * Author: fronald
+ * File:   Goulomb.h
+ * Author: Diogo Dias
  *
- * Created on 21 de Outubro de 2016, 11:19
+ * Created on 14 de Marco de 2017, 09:40
  */
 
-#ifndef FIBONACCI_H
-#define FIBONACCI_H
+#ifndef GOULOMB_H
+#define GOULOMB_H
 
 #include <vector>
 #include "Calculo.h"
@@ -16,7 +16,7 @@ using namespace std;
 /**
  * Implementa o calculo de Fibonacci.
  */
-class Fibonacci: public Calculo {
+class Goulomb: public Calculo {
     
 public:
     /**
@@ -24,7 +24,7 @@ public:
      * @param inicio Inicio do calculo
      * @params tamanho Numero de resultados para calcular
      */
-    Fibonacci(int inicio = 0, unsigned int tamanho = 10, Interceptador *interceptador = 0);
+    Goulomb(int inicio = 0, unsigned int tamanho = 10, Interceptador *interceptador = 0);
     
     /**
      * Calcula
@@ -65,15 +65,15 @@ public:
     /**
      * Destructor
      */
-    virtual ~Fibonacci();
+    virtual ~Goulomb();
 private:
     
     /**
      * Lista de resultados
      */
-    vector<unsigned long> resultados;
+    vector<int> resultados;
     
 };
 
-#endif /* FIBONACCI_H */
+#endif /* GOULOMB_H */
 
