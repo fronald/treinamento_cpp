@@ -10,8 +10,11 @@
 #include "Calculo.h"
 #include "Fibonacci.h"
 #include "Primos.h"
+#include "Goulomb.h"
 #include "SalvaCalculo.h"
+#include "Interceptador.h"
 #include <map>
+#include <typeinfo>
 
 #ifdef WITH_UNIT_TEST
 #include <gtest/gtest.h>
@@ -33,11 +36,14 @@ void imprimeCalculo(Calculo *calculo) {
     printf("%s\n", calculo->nome().c_str());
     printf("%s\t\t%s\n", "Indice", "Valor");
     for (unsigned int i = 0; i < calculo->numeroResultados(); i++) {
-        printf("%d\t\t%d\n", i, calculo->resultado(i));
+
+        printf("%d\t\t%lu\n", i, calculo->resultado(i));
+
     }
+
 }
 
-/*
+/*;
  * Este é o ponto de início da aplicação.
  * @param argc Número de argumentos passados
  * @param argv Vetor com os parâmetros
@@ -48,29 +54,41 @@ int main(int argc, char** argv) {
         printf("%s", "Ex: ./calculo 1 100 fibonacci ./teste_fibonacci\n");
         return EXIT_SUCCESS;
     }
-
-    int inicio = atoi(argv[1]);
-    int tamanho = atoi(argv[2]);
+    int intercept_output = 0;
+    unsigned int inicio = atoi(argv[1]);
+    unsigned int tamanho = atoi(argv[2]);
 
     map<string, Calculo*> calculos;
     calculos.insert(pair<string, Calculo*>("fibonacci", new Fibonacci(inicio, tamanho)));
     calculos.insert(pair<string, Calculo*>("primos", new Primos(inicio, tamanho)));
+    calculos.insert(pair<string, Calculo*>("goulomb", new Goulomb(inicio, tamanho)));
+    //calculos.
+    Interceptador *interceptator = new Interceptador();
+    intercept_output = interceptator->intercepta(tamanho);
+    printf("tamanho %d", intercept_output);
+    
     
     // Retorna sucesso
     if (argc > 3) {
         if (calculos.count(argv[3]) > 0) {
             Calculo *calculo = calculos.at(argv[3]);
             calculo->calcula();
+//            printf("map b4 %lu\n",calculo->resultado(48));
+
             if (argc > 4) {
                 SalvaCalculo *sc = new SalvaCalculo(calculo);
                 sc->salva(argv[4]);
             } else {
                 imprimeCalculo(calculo);
+
+
             }
         }
     } else {
         for (map<string, Calculo*>::iterator it = calculos.begin(); it != calculos.end(); it++) {
+
             imprimeCalculo(it->second);
+
         }
     }
 

@@ -46,7 +46,7 @@ public:
      * @param indice
      * @return 
      */
-    virtual int resultado(unsigned int indice);
+    virtual unsigned long resultado(unsigned int indice);
     
     /**
      * Nome do cálculo

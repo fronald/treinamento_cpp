@@ -15,11 +15,11 @@ class Primos : public Calculo {
     
     public:
         
-        Primos(int inicio = 0, unsigned int tamanho = 0, Interceptador *interceptador = 0);
+        Primos(unsigned long long inicio = 0, unsigned int tamanho = 0, Interceptador *interceptador = 0);
         
         virtual unsigned int numeroResultados();
         
-        virtual int resultado(unsigned int indice);
+        virtual unsigned long resultado(unsigned int indice);
         
         virtual void limpaCalculo();
         
